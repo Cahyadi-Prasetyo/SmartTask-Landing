@@ -21,7 +21,7 @@
     <!-- Top row: brand + subscriber count -->
     <div class="foot-top">
       <div class="foot-brand">
-        <img src="/logo.webp" alt="SmarTask" width="20" height="20" style="border-radius:4px" />
+        <img src="/logo.webp" alt="SmarTask" width="36" height="36" class="foot-logo-img" />
         <span class="mono foot-name">SMARTASK</span>
       </div>
       <div class="sub-counter mono">
@@ -61,8 +61,7 @@
 
     <!-- Bottom row -->
     <div class="foot-bottom">
-      <span class="mono foot-copy">© 2026 Tim SmarTask · Proyek Tugas Akhir</span>
-      <span class="mono foot-copy" style="color:var(--ash)">Dibangun dengan Svelte + Go</span>
+      <span class="mono foot-copy">© 2026 Tim SmarTask</span>
     </div>
 
   </div>
@@ -105,13 +104,20 @@
   .foot-brand {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+  }
+  .foot-logo-img {
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    flex-shrink: 0;
   }
   .foot-name {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
     color: var(--body-c);
-    letter-spacing: 0.4px;
+    letter-spacing: 0.6px;
   }
   .sub-counter {
     display: flex;
