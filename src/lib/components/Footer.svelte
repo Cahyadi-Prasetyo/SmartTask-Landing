@@ -108,8 +108,8 @@
   }
   .foot-logo-img {
     border-radius: 6px;
-    width: 36px;
-    height: 36px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     flex-shrink: 0;
   }
