@@ -113,7 +113,8 @@
     grid-template-columns: 1fr 1.1fr;
     gap: 80px;
     align-items: start;
-    padding: var(--s10) 0 var(--s10);
+    padding-top: var(--s10);
+    padding-bottom: var(--s10);
   }
 
   .stat-num-col {
@@ -226,6 +227,12 @@
     .reminder-phases { grid-template-columns: repeat(2,1fr); }
   }
   @media (max-width: 600px) {
+    .stat-section { overflow-x: hidden; }
+    .stat-inner { overflow: hidden; }
     .reminder-phases { grid-template-columns: 1fr; }
+    .big-num { font-size: clamp(3.5rem, 15vw, 5rem); }
+    .big-label { max-width: 100%; }
+    .stat-text-col { padding-left: 0; }
+    .stat-body { word-break: break-word; }
   }
 </style>

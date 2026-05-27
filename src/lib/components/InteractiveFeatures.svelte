@@ -594,4 +594,12 @@
     .how-layout, .sync-layout { grid-template-columns: 1fr; gap: 40px; }
     .sec-body { max-width: 100%; }
   }
+  @media (max-width: 600px) {
+    .how-layout, .sync-layout { gap: 28px; overflow: hidden; }
+    .formula-code { font-size: 12px; white-space: pre-wrap; word-break: break-word; }
+    .calc-box { padding: var(--s4); }
+    .stat-row { flex-wrap: wrap; }
+    .board-bar { width: 60px; }
+    .sec-headline { font-size: clamp(1.4rem, 5vw, 2rem); }
+  }
 </style>

@@ -97,6 +97,17 @@ body {
   padding: 0 var(--s6);
 }
 
+@media (max-width: 600px) {
+  .container {
+    padding: 0 var(--s5);
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    padding: 0 var(--s4);
+  }
+}
+
 /* ─── Mono ─── */
 .mono {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -188,7 +199,7 @@ body {
 }
 
 /* ─── Section border ─── */
-.section-rule { border-top: 1px solid var(--hair); }
+.section-rule { border-top: 1px solid var(--hair); overflow-x: hidden; }
 
 /* ─── Scroll reveal ─── */
 .reveal {
