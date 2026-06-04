@@ -2,8 +2,12 @@
   import { onMount } from 'svelte';
 
   /* ── Countdown with flip animation ── */
-  const TARGET = new Date('2026-06-16T00:00:00+07:00').getTime();
-  let d = 23, h = 0, m = 0, s = 0;
+  const TARGET = new Date('2026-06-11T00:00:00+07:00').getTime();
+  const initialDiff = Math.max(0, TARGET - Date.now());
+  let d = Math.floor(initialDiff / 86400000);
+  let h = Math.floor((initialDiff % 86400000) / 3600000);
+  let m = Math.floor((initialDiff % 3600000) / 60000);
+  let s = Math.floor((initialDiff % 60000) / 1000);
   let prevS = -1, flipS = false;
 
   function tick() {
@@ -31,6 +35,7 @@
     { pri: 'low',    pLabel: '○',  name: 'Review IEEE Paper Skripsi',   dead: 'H-7',      score: 3.0, by: 'Syawal' },
   ];
 
+  /** @type {any[]} */
   let visible = [];
   let active  = 0;
   let cursor  = true;
@@ -45,7 +50,9 @@
              : '#6366f1';
 
   /* ── Magnetic CTA ── */
+  /** @type {any} */
   let magRef;
+  /** @param {any} e */
   function onMagMove(e) {
     if (!magRef) return;
     const r = magRef.getBoundingClientRect();
@@ -101,6 +108,7 @@
     };
   });
 
+  /** @param {any} n */
   function p2(n) { return String(n).padStart(2, '0'); }
 
   /* ── Subscribe ── */
@@ -135,7 +143,7 @@
           Segera Rilis
         </span>
         <span class="badge" style="border-color:transparent;background:transparent;color:var(--mute)">
-          16 Juni 2026
+          11 Juni 2026
         </span>
       </div>
 
@@ -170,7 +178,7 @@
           {#each [[d,'hr',false],[h,'jam',false],[m,'mnt',false],[s,'dtk',flipS]] as [val,lbl,doFlip], i}
             {#if i > 0}<span class="cd-sep mono">:</span>{/if}
             <div class="cd-unit">
-              <span class="cd-num mono" class:flip-anim={doFlip} key={val}>
+              <span class="cd-num mono" class:flip-anim={doFlip}>
                 {i === 0 ? val : p2(val)}
               </span>
               <span class="cd-lbl">{lbl}</span>
