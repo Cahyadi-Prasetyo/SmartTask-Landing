@@ -111,18 +111,7 @@
   /** @param {any} n */
   function p2(n) { return String(n).padStart(2, '0'); }
 
-  /* ── Subscribe ── */
-  let email = '', formState = 'idle', errMsg = '';
-  function handleSub() {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { formState = 'error'; errMsg = 'Format email tidak valid'; return; }
-    formState = 'loading';
-    setTimeout(() => {
-      const list = JSON.parse(localStorage.getItem('st_subs') || '[]');
-      if (list.includes(email)) { formState = 'error'; errMsg = 'Email sudah terdaftar'; return; }
-      list.push(email); localStorage.setItem('st_subs', JSON.stringify(list));
-      formState = 'success'; email = '';
-    }, 700);
-  }
+
 </script>
 
 <section class="hero">
@@ -166,7 +155,14 @@
           on:mousemove={onMagMove}
           on:mouseleave={onMagLeave}
         >
-          <a href="#join" class="btn btn-primary cta-main">Daftar Akses Awal</a>
+          <a href="/smartask.apk" download class="btn btn-primary cta-main" id="hero-download">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download APK
+          </a>
         </span>
         <a href="#how" class="btn btn-ghost">Cara kerjanya →</a>
       </div>
@@ -265,33 +261,6 @@
     </div>
   </div>
 
-  <!-- Subscribe bar -->
-  <div id="join" class="sub-bar container">
-    <span class="sub-label">Dapatkan notifikasi saat rilis ↘</span>
-    {#if formState === 'success'}
-      <div class="sub-success">
-        <span class="success-icon">✓</span>
-        <span class="mono" style="font-size:13px;color:var(--success)">Terdaftar. Kami akan kabari Anda.</span>
-      </div>
-    {:else}
-      <form class="sub-form" on:submit|preventDefault={handleSub}>
-        <input
-          type="email"
-          bind:value={email}
-          placeholder="email@kampus.ac.id"
-          class="sub-input"
-          disabled={formState === 'loading'}
-          on:input={() => formState = 'idle'}
-        />
-        <button type="submit" class="btn btn-primary sub-submit" disabled={formState === 'loading'}>
-          {formState === 'loading' ? '...' : 'Notify Me'}
-        </button>
-      </form>
-      {#if formState === 'error'}
-        <span class="sub-err mono">{errMsg}</span>
-      {/if}
-    {/if}
-  </div>
 </section>
 
 <style>

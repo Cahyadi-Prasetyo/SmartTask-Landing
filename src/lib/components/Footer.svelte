@@ -39,7 +39,7 @@
         <a href="#how"   class="foot-link">Cara Kerja Prioritas</a>
         <a href="#demo"  class="foot-link">Simulasi WebSocket</a>
         <a href="#stack" class="foot-link">Infrastruktur</a>
-        <a href="#join"  class="foot-link">Daftar Akses Awal</a>
+        <a href="/smartask.apk" download class="foot-link">Download APK</a>
       </div>
       <div class="link-col">
         <span class="col-head mono">Tim</span>

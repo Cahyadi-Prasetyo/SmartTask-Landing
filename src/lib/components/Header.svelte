@@ -35,7 +35,7 @@
 
     <!-- Right cluster -->
     <div class="nav-right">
-      <a href="#join" class="btn btn-primary">Download Soon</a>
+     
       <button class="burger" aria-label="menu" on:click={() => menuOpen = !menuOpen} class:open={menuOpen}>
         <span></span><span></span><span></span>
       </button>
@@ -45,7 +45,7 @@
   <!-- Mobile overlay -->
   {#if menuOpen}
     <div class="mob-menu">
-      {#each [['#how','Cara Kerja'],['#demo','Demo'],['#stack','Teknologi'],['#join','Daftar Akses Awal']] as [href,label], i}
+      {#each [['#how','Cara Kerja'],['#demo','Demo'],['#stack','Teknologi']] as [href,label], i}
         <a {href} class="mob-link" style="animation-delay:{i*40}ms" on:click={() => menuOpen = false}>{label}</a>
       {/each}
     </div>
