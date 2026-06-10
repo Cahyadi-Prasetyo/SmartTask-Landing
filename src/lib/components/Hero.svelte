@@ -99,7 +99,7 @@
 
     <!-- ── Left: Copy (hero entrance stagger) ── -->
     <div class="hero-copy">
-      <div class="eyebrow-row hero-enter he-0">
+      <!-- <div class="eyebrow-row hero-enter he-0">
         <span class="badge badge-brand">
           <span class="live-dot"></span>
           Segera Rilis
@@ -107,7 +107,7 @@
         <span class="badge" style="border-color:transparent;background:transparent;color:var(--mute)">
           11 Juni 2026
         </span>
-      </div>
+      </div> -->
 
       <h1 class="headline hero-enter he-1">
         <span class="h-dim">Kelola Tugas Kuliah</span>
