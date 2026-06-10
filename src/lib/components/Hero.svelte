@@ -1,31 +1,7 @@
 <script>
   import { onMount } from 'svelte';
 
-  /* ── Countdown with flip animation ── */
-  const TARGET = new Date('2026-06-11T00:00:00+07:00').getTime();
-  const initialDiff = Math.max(0, TARGET - Date.now());
-  let d = Math.floor(initialDiff / 86400000);
-  let h = Math.floor((initialDiff % 86400000) / 3600000);
-  let m = Math.floor((initialDiff % 3600000) / 60000);
-  let s = Math.floor((initialDiff % 60000) / 1000);
-  let prevS = -1, flipS = false;
 
-  function tick() {
-    const diff = TARGET - Date.now();
-    if (diff < 0) return;
-    const ns = Math.floor((diff % 60000) / 1000);
-    // Flip animation trigger when seconds change
-    if (ns !== prevS && prevS !== -1) {
-      flipS = false;
-      requestAnimationFrame(() => { flipS = true; });
-      setTimeout(() => { flipS = false; }, 250);
-    }
-    prevS = ns;
-    d = Math.floor(diff / 86400000);
-    h = Math.floor((diff % 86400000) / 3600000);
-    m = Math.floor((diff % 3600000) / 60000);
-    s = ns;
-  }
 
   /* ── Command palette ── */
   const ALL_TASKS = [
@@ -75,8 +51,6 @@
   }
 
   onMount(() => {
-    tick();
-    const clock = setInterval(tick, 1000);
     window.addEventListener('scroll', onScroll, { passive: true });
 
     // Reveal tasks staggered
@@ -102,14 +76,13 @@
     const blinker = setInterval(() => { cursor = !cursor; }, 500);
 
     return () => {
-      clearInterval(clock); clearInterval(cycle);
+      clearInterval(cycle);
       clearInterval(blinker); clearInterval(typer);
       window.removeEventListener('scroll', onScroll);
     };
   });
 
-  /** @param {any} n */
-  function p2(n) { return String(n).padStart(2, '0'); }
+
 
 
 </script>
@@ -167,21 +140,7 @@
         <a href="#how" class="btn btn-ghost">Cara kerjanya →</a>
       </div>
 
-      <!-- Countdown — raw mono digits, flip on seconds change -->
-      <div class="countdown hero-enter he-4">
-        <span class="cd-label mono">Rilis dalam</span>
-        <div class="cd-nums">
-          {#each [[d,'hr',false],[h,'jam',false],[m,'mnt',false],[s,'dtk',flipS]] as [val,lbl,doFlip], i}
-            {#if i > 0}<span class="cd-sep mono">:</span>{/if}
-            <div class="cd-unit">
-              <span class="cd-num mono" class:flip-anim={doFlip}>
-                {i === 0 ? val : p2(val)}
-              </span>
-              <span class="cd-lbl">{lbl}</span>
-            </div>
-          {/each}
-        </div>
-      </div>
+
     </div>
 
     <!-- ── Right: Command Palette Mockup ── -->
@@ -369,48 +328,7 @@
   }
   .cta-main:hover::after { opacity: 1; }
 
-  /* Countdown */
-  .countdown {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding-top: 4px;
-  }
-  .cd-label {
-    font-size: 11px;
-    color: var(--ash);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .cd-nums {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-  }
-  .cd-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 42px;
-  }
-  .cd-num {
-    font-size: 1.75rem;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1;
-    display: block;
-  }
-  .cd-lbl {
-    font-size: 10px;
-    color: var(--ash);
-    margin-top: 3px;
-    letter-spacing: 0.3px;
-  }
-  .cd-sep {
-    color: var(--hair-strong);
-    font-size: 1.4rem;
-    padding-bottom: 14px;
-  }
+
 
   /* Palette */
   .palette-wrap {
