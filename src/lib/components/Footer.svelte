@@ -50,7 +50,7 @@
       </div>
       <div class="link-col">
         <span class="col-head mono">Informasi</span>
-        <span class="foot-static">Status: <span style="color:var(--success)">Dalam pengembangan</span></span>
+        <span class="foot-static">Status: <span style="color:var(--success)">Release</span></span>
         <span class="foot-static">Target rilis: 11 Juni 2026</span>
         <span class="foot-static">Platform: Android (awal)</span>
         <span class="foot-static">Backend: Go 1.22</span>
