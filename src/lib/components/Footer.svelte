@@ -47,6 +47,7 @@
         <span class="foot-static">Oktaviandra — Go Backend</span>
         <span class="foot-static">Muhammad Thesar — Algorithm</span>
         <span class="foot-static">Syawal Rizal Utama — Design</span>
+        <span class="foot-static">Widya — QA & Documentation</span>
       </div>
       <div class="link-col">
         <span class="col-head mono">Informasi</span>
